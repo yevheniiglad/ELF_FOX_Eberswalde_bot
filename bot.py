@@ -17,6 +17,7 @@ from telegram.ext import (
 # ================== CONFIG ==================
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_ID = int(os.getenv("ADMIN_ID"))
+ADMIN_ID1 = int(os.getenv("ADMIN_ID1"))
 COURIER_URL = "https://t.me/managervapeshopdd"
 
 if not BOT_TOKEN or not ADMIN_ID:
