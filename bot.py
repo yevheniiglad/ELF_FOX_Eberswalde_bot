@@ -12,8 +12,8 @@ from telegram.ext import (
     ContextTypes
 )
 
-TOKEN = "PASTE_YOUR_BOT_TOKEN_HERE"
-ADMIN_ID = 123456789  # ← ТУТ ТВОЙ TELEGRAM ID
+TOKEN = 8597260960:AAEBCdH60WAsjLFhlbWnuo2cvwBxZmSRbSE
+ADMIN_ID = 721379009
 COURIER_USERNAME = "@managervapeshopdd"
 
 # ---------- LOAD CATALOG ----------
