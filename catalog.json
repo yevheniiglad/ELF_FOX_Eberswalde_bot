@@ -3,193 +3,84 @@
   "categories": {
     "liquids": {
       "title": "💧 Рідини",
-      "brands": {
-        "ELFLIQ": {
-          "price": 19,
-          "volume": "30 ML",
-          "nicotine": "5%",
-          "items": [
-            "🍎 Apple Peach",
-            "🍐 Apple Pear",
-            "🍇 Blackcurrant Aniseed",
-            "🫐 Blue Razz Lemonade",
-            "🫐 Blue Razz",
-            "🫐 Blueberry",
-            "🫐 Blueberry Raspberry Pomegranate",
-            "🫐 Blueberry Rose Mint",
-            "🍒 Cherry",
-            "🍒 Cherry Lemon Peach",
-            "❄️ Peach Ice",
-            "🍊 Pink Grapefruit",
-            "🌱 Rhubarb Snoow",
-            "🌿 Spearmint",
-            "🍓 Strawberry Ice",
-            "🍓 Strawberry Raspberry Cherry Ice",
-            "🍓 Strawberry Snoow",
-            "🍓 Strawberry Banana",
-            "🍓 Strawberry Cherry Lemon",
-            "🍉 Watermelon Cherry",
-            "🍋 Lemon Lime",
-            "🍑 Mango Peach",
-            "🍍 Pineapple Colada",
-            "🍍 Pineapple Ice",
-            "🍹 Pink Lemonade Soda",
-            "🍇 Raspberry Lychee",
-            "🍈 Sour Watermelon Gummy",
-            "🍎 Double Apple",
-            "🍇 Grape Cherry"
-          ]
-        },
-        "CHASER LUX": {
-          "volume": "30 ML",
-          "nicotine": "50 MG",
-          "variants": [
-            {
-              "nicotine": "5%",
-              "price": 19,
-              "items": [
-                "🥝 Kiwi Passion Fruit Guava",
-                "🍑 Peach Tea",
-                "🍏 Sour Apple",
-                "🍓 Strawberry Cream",
-                "🍍 Tropic Punch",
-                "🍊 Vitamin",
-                "🍉 Watermelon Raspberry",
-                "🍷 Sungria",
-                "🍈 Sour Watermelon Candy",
-                "🍑 Peach Yogurt",
-                "🥭 Mango Nectar",
-                "🫐 Blueberry Raspberry",
-                "🫐 Blackberry Pink Guava",
-                "🫐 Blackberry Lemonade"
-              ]
-            },
-            {
-              "nicotine": "6.5%",
-              "price": 20,
-              "items": [
-                "🥝 Kiwi Passion Fruit Guava",
-                "🍑 Peach Tea",
-                "🍏 Sour Apple",
-                "🍓 Strawberry Cream",
-                "🍍 Tropic Punch",
-                "🍊 Vitamin",
-                "🍉 Watermelon Raspberry",
-                "🍷 Sungria",
-                "🍈 Sour Watermelon Candy",
-                "🍑 Peach Yogurt",
-                "🥭 Mango Nectar",
-                "🫐 Blueberry Raspberry",
-                "🫐 Blackberry Pink Guava",
-                "🫐 Blackberry Lemonade"
-              ]
-            }
-          ]
-        },
-        "HQD PREMIUM SALT": {
-          "price": 17,
-          "volume": "30 ML",
-          "nicotine": "5%",
-          "items": [
-            "🍒 Cherry Ice",
-            "🍋 Lemon Lime",
-            "🫐 Blueberry Lemonade",
-            "🍓 Strawberry Ice"
-          ]
-        },
-        "NASTY": {
-          "price": 17.5,
-          "volume": "30 ML",
-          "nicotine": "50 MG",
-          "items": [
-            "🥤 Cherry Cola",
-            "🍇 Grape Pomegranate",
-            "🍇 Grape Raspberry",
-            "🍓 Pomegranate Berry",
-            "🍉 Raspberry Watermelon",
-            "🍉 Watermelon Strawberry"
-          ]
-        }
-      }
+      "items": [
+        { "name": "ELFLIQ 5% – 🍎 Apple Peach", "price": 19 },
+        { "name": "ELFLIQ 5% – 🍐 Apple Pear", "price": 19 },
+        { "name": "ELFLIQ 5% – 🍇 Blackcurrant Aniseed", "price": 19 },
+        { "name": "ELFLIQ 5% – 🫐 Blue Razz Lemonade", "price": 19 },
+        { "name": "ELFLIQ 5% – 🫐 Blueberry", "price": 19 },
+        { "name": "ELFLIQ 5% – 🍒 Cherry", "price": 19 },
+        { "name": "ELFLIQ 5% – ❄️ Peach Ice", "price": 19 },
+        { "name": "ELFLIQ 5% – 🍊 Pink Grapefruit", "price": 19 },
+        { "name": "ELFLIQ 5% – 🌿 Spearmint", "price": 19 },
+        { "name": "ELFLIQ 5% – 🍓 Strawberry Ice", "price": 19 },
+        { "name": "ELFLIQ 5% – 🍉 Watermelon Cherry", "price": 19 },
+
+        { "name": "CHASER LUX 5% – 🥝 Kiwi Passion Fruit Guava", "price": 19 },
+        { "name": "CHASER LUX 5% – 🍑 Peach Tea", "price": 19 },
+        { "name": "CHASER LUX 5% – 🍏 Sour Apple", "price": 19 },
+        { "name": "CHASER LUX 5% – 🍓 Strawberry Cream", "price": 19 },
+
+        { "name": "CHASER LUX 6.5% – 🥝 Kiwi Passion Fruit Guava", "price": 20 },
+        { "name": "CHASER LUX 6.5% – 🍑 Peach Tea", "price": 20 },
+        { "name": "CHASER LUX 6.5% – 🍏 Sour Apple", "price": 20 },
+        { "name": "CHASER LUX 6.5% – 🍓 Strawberry Cream", "price": 20 },
+
+        { "name": "HQD Salt 5% – 🍒 Cherry Ice", "price": 17 },
+        { "name": "HQD Salt 5% – 🍋 Lemon Lime", "price": 17 },
+        { "name": "HQD Salt 5% – 🫐 Blueberry Lemonade", "price": 17 },
+
+        { "name": "NASTY 50mg – 🥤 Cherry Cola", "price": 17.5 },
+        { "name": "NASTY 50mg – 🍇 Grape Raspberry", "price": 17.5 },
+        { "name": "NASTY 50mg – 🍉 Watermelon Strawberry", "price": 17.5 }
+      ]
     },
 
     "devices": {
-      "title": "🔌 Девайси Vaporesso",
+      "title": "🔌 Девайси",
       "items": [
-        { "name": "XROS 4 Mini", "price": 36 },
-        { "name": "XROS 4 Nano", "price": 45 },
-        { "name": "XROS 5 Mini", "price": 38 },
-        { "name": "XROS 4", "price": 43 },
-        { "name": "XROS 5", "price": 48 },
-        { "name": "XROS Pro (1 покоління)", "price": 50 },
-        { "name": "XROS Pro 2", "price": 52 }
+        { "name": "Vaporesso XROS 4 Mini", "price": 36 },
+        { "name": "Vaporesso XROS 4 Nano", "price": 45 },
+        { "name": "Vaporesso XROS 5 Mini", "price": 38 },
+        { "name": "Vaporesso XROS 5", "price": 48 },
+        { "name": "Vaporesso XROS Pro", "price": 50 },
+        { "name": "Vaporesso XROS Pro 2", "price": 52 }
       ]
     },
 
-    "pods": {"title": "🔧 Картриджі (ціна за 1 шт)",
-      "price_per_item": 8,
+    "pods": {
+      "title": "🔧 Картриджі",
       "items": [
-        "⚙️ 0.4Ω",
-        "⚙️ 0.6Ω",
-        "⚙️ 0.8Ω",
-        "⚙️ 1.0Ω"
-      ]
-    },
-
-    "elfbar_pods": {
-      "title": "🟣 Elf Bar POD",
-      "items": [
-        { "name": "Elf Bar Pro Pod", "price": 39 },
-        { "name": "Elf Bar Cartridge 0.6Ω", "price": 8 },
-        { "name": "Elf Bar Cartridge 0.8Ω", "price": 8 }
+        { "name": "Картридж 0.4Ω", "price": 8 },
+        { "name": "Картридж 0.6Ω", "price": 8 },
+        { "name": "Картридж 0.8Ω", "price": 8 },
+        { "name": "Картридж 1.0Ω", "price": 8 }
       ]
     },
 
     "disposables": {
       "title": "🔥 Одноразки",
-      "brands": {
-        "VOZOL": {
-          "items": [
-            { "name": "Vozol Gear 10K", "price": 20 },
-            { "name": "Vozol Star 12K", "price": 25 },
-            { "name": "Vozol Vista 20K", "price": 35 },
-            { "name": "Vozol Star 20K", "price": 35 },
-            { "name": "Vozol 40K", "price": 47 }
-          ]
-        },
-        "ELF BAR": {
-          "items": [
-            { "name": "Elf Bar 20K", "price": 36 },
-            { "name": "Elf Bar 23K", "price": 43 },
-            { "name": "Elf Bar Planet 25K", "price": 45 },
-            {
-              "name": "Elf Bar TRIO 40K (🔥 Акція)",
-              "price": 40,
-              "puffs": "40 000",
-              "items": [
-                "🍏 Sour Apple Ice",
-                "🍑 Peach Twist",
-                "🍎 Pomegranate Blast",
-                "❄️ Cool Menthol",
-                "🍍 Pineapple Lime",
-                "🍇 La Grape"
-              ]
-            }
-          ]
-        },
-        "HQD": {
-          "items": [
-            { "name": "HQD 12K", "price": 25 }
-          ]
-        },
-        "WAKA": {
-          "nicotine": "7–9%",
-          "items": [
-            { "name": "Waka 10K", "price": 38 },
-            { "name": "Waka 25K", "price": 48 }
-          ]
-        }
-      }
+      "items": [
+        { "name": "Vozol Gear 10K", "price": 20 },
+        { "name": "Vozol Star 12K", "price": 25 },
+        { "name": "Vozol Vista 20K", "price": 35 },
+        { "name": "Vozol 40K", "price": 47 },
+
+        { "name": "Elf Bar 20K", "price": 36 },
+        { "name": "Elf Bar 23K", "price": 43 },
+        { "name": "Elf Bar Planet 25K", "price": 45 },
+
+        { "name": "Elf Bar TRIO 40K – 🍏 Sour Apple Ice", "price": 40 },
+        { "name": "Elf Bar TRIO 40K – 🍑 Peach Twist", "price": 40 },
+        { "name": "Elf Bar TRIO 40K – 🍎 Pomegranate Blast", "price": 40 },
+        { "name": "Elf Bar TRIO 40K – ❄️ Cool Menthol", "price": 40 },
+        { "name": "Elf Bar TRIO 40K – 🍍 Pineapple Lime", "price": 40 },
+        { "name": "Elf Bar TRIO 40K – 🍇 La Grape", "price": 40 },
+
+        { "name": "HQD 12K", "price": 25 },
+        { "name": "WAKA 10K (7–9%)", "price": 38 },
+        { "name": "WAKA 25K (7–9%)", "price": 48 }
+      ]
     }
   }
 }
