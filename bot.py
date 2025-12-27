@@ -101,17 +101,14 @@ async def category_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["category"] = category
 
     cat_data = CATALOG["categories"][category]
-
     keyboard = []
 
-    # liquids → brands
     if "brands" in cat_data:
         for brand in cat_data["brands"]:
             keyboard.append([
                 InlineKeyboardButton(brand, callback_data=f"brand:{category}:{brand}")
             ])
     else:
-        # items directly
         for item in cat_data["items"]:
             keyboard.append([
                 InlineKeyboardButton(
@@ -139,7 +136,7 @@ async def brand_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     for flavor in brand_data["items"]:
         keyboard.append([
             InlineKeyboardButton(
-                f"{flavor}",
+                flavor,
                 callback_data=f"add:{category}:{brand}:{flavor}"
             )
         ])
@@ -165,10 +162,8 @@ async def add_to_cart(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     parts = query.data.split(":")
     category = parts[1]
-
     cart = get_cart(context)
 
-    # liquids
     if len(parts) == 4:
         _, _, brand, flavor = parts
         price = CATALOG["categories"][category]["brands"][brand]["price"]
@@ -178,10 +173,7 @@ async def add_to_cart(update: Update, context: ContextTypes.DEFAULT_TYPE):
         items = CATALOG["categories"][category]["items"]
         price = next(i["price"] for i in items if i["name"] == name)
 
-    cart.append({
-        "name": name,
-        "price": price
-    })
+    cart.append({"name": name, "price": price})
 
     await query.edit_message_text(
         f"✅ Додано:\n{name}\n💶 {price} {CURRENCY}",
@@ -253,6 +245,8 @@ async def checkout(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     context.user_data.clear()
 
+    # 🔑 КЛЮЧОВА ПРАВКА
+    await query.edit_message_reply_markup(reply_markup=None)
     await query.edit_message_text(
         "✅ Дякуємо за замовлення!\n\n"
         "Адміністратор звʼяжеться з вами:\n"
