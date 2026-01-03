@@ -11,7 +11,9 @@ from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
     CallbackQueryHandler,
-    ContextTypes
+    MessageHandler,
+    ContextTypes,
+    filters
 )
 
 # ================== CONFIG ==================
@@ -55,23 +57,60 @@ def cart_total(cart):
 def get_username(user):
     return f"@{user.username}" if user.username else f"id:{user.id}"
 
-# ================== START ==================
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# ================== CITY SELECTION ==================
+async def ask_city(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [
+        [InlineKeyboardButton("📍 Берлін", callback_data="city:Berlin")],
+        [InlineKeyboardButton("📍 Дрезден", callback_data="city:Dresden")],
+        [InlineKeyboardButton("📍 Лейпциг", callback_data="city:Leipzig")],
+        [InlineKeyboardButton("✍️ Інше місто", callback_data="city:OTHER")]
+    ]
+
+    await update.message.reply_text(
+        "Звідки ви?",
+        reply_markup=InlineKeyboardMarkup(keyboard)
+    )
+
+async def city_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+
+    city = query.data.split(":")[1]
+
+    if city == "OTHER":
+        context.user_data["awaiting_city"] = True
+        await query.edit_message_text("✍️ Напишіть ваше місто:")
+    else:
+        context.user_data["city"] = city
+        await show_main_menu(query, context)
+
+async def city_text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if not context.user_data.get("awaiting_city"):
+        return
+
+    context.user_data["city"] = update.message.text.strip()
+    context.user_data.pop("awaiting_city", None)
+
+    await show_main_menu(update, context)
+
+# ================== MAIN MENU ==================
+async def show_main_menu(update_or_query, context):
     keyboard = [
         [InlineKeyboardButton("🛍 Каталог", callback_data="catalog")],
         [InlineKeyboardButton("ℹ️ Контакт адміністратора", url=COURIER_URL)]
     ]
 
-    if update.message:
-        await update.message.reply_text(
-            "Вітаю 👋\nОберіть дію:",
-            reply_markup=InlineKeyboardMarkup(keyboard)
-        )
+    text = "Вітаю 👋\nОберіть дію:"
+
+    if hasattr(update_or_query, "edit_message_text"):
+        await update_or_query.edit_message_text(text, reply_markup=InlineKeyboardMarkup(keyboard))
     else:
-        await update.callback_query.edit_message_text(
-            "Вітаю 👋\nОберіть дію:",
-            reply_markup=InlineKeyboardMarkup(keyboard)
-        )
+        await update_or_query.message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard))
+
+# ================== START ==================
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    context.user_data.clear()
+    await ask_city(update, context)
 
 # ================== CATALOG ==================
 async def catalog_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -228,12 +267,14 @@ async def checkout(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await query.edit_message_text("🛒 Кошик порожній")
         return
 
+    city = context.user_data.get("city", "Невідомо")
     total = cart_total(cart)
 
     order_text = (
         "📦 НОВЕ ЗАМОВЛЕННЯ\n\n"
         f"👤 Клієнт: {get_username(user)}\n"
-        f"ID: {user.id}\n\n"
+        f"ID: {user.id}\n"
+        f"📍 Місто: {city}\n\n"
         "🛒 Товари:\n" +
         "\n".join(f"• {i['name']} — {i['price']} {CURRENCY}" for i in cart) +
         f"\n\n💰 Разом: {total} {CURRENCY}"
@@ -245,7 +286,6 @@ async def checkout(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     context.user_data.clear()
 
-    # 🔑 Головна правка: один виклик edit_message_text з reply_markup=None
     await query.edit_message_text(
         "✅ Дякуємо за замовлення!\n\n"
         "Адміністратор звʼяжеться з вами:\n"
@@ -262,7 +302,10 @@ def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CallbackQueryHandler(start, pattern="^start$"))
+    app.add_handler(CallbackQueryHandler(city_handler, pattern="^city:"))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, city_text_handler))
+
+    app.add_handler(CallbackQueryHandler(show_main_menu, pattern="^start$"))
     app.add_handler(CallbackQueryHandler(catalog_menu, pattern="^catalog$"))
     app.add_handler(CallbackQueryHandler(category_handler, pattern="^category:"))
     app.add_handler(CallbackQueryHandler(brand_handler, pattern="^brand:"))
@@ -270,8 +313,8 @@ def main():
     app.add_handler(CallbackQueryHandler(cart_handler, pattern="^cart$"))
     app.add_handler(CallbackQueryHandler(clear_cart, pattern="^clear_cart$"))
     app.add_handler(CallbackQueryHandler(checkout, pattern="^checkout$"))
-    app.add_error_handler(error_handler)
 
+    app.add_error_handler(error_handler)
     app.run_polling()
 
 if __name__ == "__main__":
